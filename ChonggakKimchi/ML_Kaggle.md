@@ -14,7 +14,7 @@ ex) y = (data(melbourne_data)).(column(Price))
 
 X = (data(melbourne_data))[(나타낼 데이터 호칭)]
 
-## Building My Model
+# Building My Model
 
 scikit-learn(싸이킷 런)을 이용해서, 모델을 만들 수 있다.
 
@@ -29,7 +29,7 @@ scikit-learn(싸이킷 런)을 이용해서, 모델을 만들 수 있다.
 * from sklearn.tree import DecisionTreeRegressor
 
 
-# 모델을 정해라. 매번 돌릴 때마다 같은 결과를 만들기 위해 random_state를 위한 숫자를 정해라. Specifying a number for random_state eusures you get the same results in each run.
+## 모델을 정해라. 매번 돌릴 때마다 같은 결과를 만들기 위해 random_state를 위한 숫자를 정해라. Specifying a number for random_state eusures you get the same results in each run.
 
 melbourne_model = DecisionTreeRegressor(random_state=1)
 
@@ -62,7 +62,7 @@ melbourne_model.fit(X, y)
 ... 즉 val_X에 대한 예측을 만들고(val_predictions) val_y와 val_predictions 사이의 error의 정도를 출력하는 과정인 것임.
 
 
-## Underfitting and Overfitting
+# Underfitting and Overfitting
 
 1. Overfitting : 각 가지에 대해 많은 잎들이 있을 때 -> 각 잎마다는 그에 해당하는 데이터의 양이 적을 것임. 이러한 상황에서의 예측은, 실제 데이터의 값과 거의 비슷하겠지만, 새로운 데이터에 대한 예측은 매우 부정확할 것임 (왜냐하면 각 에측이 얼마 없는 데이터들에 기반하기 때문)
 
@@ -107,13 +107,13 @@ Max leaf nodes: 5000  		 Mean Absolute Error:  254983
 
 가 나온다. 여기서는 Max leaf nodes가 500일 때 MAE의 값이 최저이므로 500이 최적의 잎의 양이다.
 
-# Conclusion of Underfitting and Overfitting
+## Conclusion of Underfitting and Overfitting
 
 1. Overfitting : 미래에 다시 발생하지 않을 가짜 패턴들을 capture함으로써, 덜 정확한 예측을 만들게 된다.
 
 2. Underfitting : 관련있는 패턴들에 대한 capture를 실패함으로써, 또다시 덜 정확한 예측을 만들게 된다.
 
-## Random Forests
+# Random Forests
 
 1. 잎이 많은 나무는, 각 예측이 각 잎에 있는 '몇개 없는 데이터에서' 추출되기 때문에 overfit에 해당한다. 반대로 잎이 몇개 없는 나무 또한, 날것의 데이터에서 많은 구별을 가져올 수 없기 때문에 제대로 수행할 수 없다.
 
