@@ -29,15 +29,13 @@ scikit-learn(싸이킷 런)을 이용해서, 모델을 만들 수 있다.
 * from sklearn.tree import DecisionTreeRegressor
 
 
-## 모델을 정해라. 매번 돌릴 때마다 같은 결과를 만들기 위해 random_state를 위한 숫자를 정해라. Specifying a number for random_state eusures you get the same results in each run.
+1. 모델을 정해라. 매번 돌릴 때마다 같은 결과를 만들기 위해 random_state를 위한 숫자를 정해라. Specifying a number for random_state eusures you get the same results in each run.
 
 melbourne_model = DecisionTreeRegressor(random_state=1)
 
-# Fit model하는 과정.
+2. fit model하는 과정 :melbourne_model.fit(X, y)
 
-melbourne_model.fit(X, y)
-
-## Model Validation
+# Model Validation
 
 1. prediction error for each house is:<br> error = actual - predicted
 
