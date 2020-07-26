@@ -1,18 +1,17 @@
 from https://www.kaggle.com/dansbecker/your-first-machine-learning-model
 
-column만 출력하려면 -> (data).columns
+- column만 출력하려면 -> (data).columns
 
-dropna -> missing values를 없애주는 기능.(na = 'not available')
+- dropna -> missing values를 없애주는 기능.(na = 'not available')
 
-(data) = (data).dropna(axis=0)
+    (data) = (data).dropna(axis=0)
 
-'dot notation' -> 우리가 예측하고자 하는 column을 선택하기 위함.
+- 'dot notation' -> 우리가 예측하고자 하는 column을 선택하기 위함.
+    ex) y = (data(melbourne_data)).(column(Price))
 
-ex) y = (data(melbourne_data)).(column(Price))
+- 특정 데이터만 나타내려면 -> (나타낼 데이터 호칭) = ['column A', 'column B' .... ] 를 하고 난 후에
 
-특정 데이터만 나타내려면 -> (나타낼 데이터 호칭) = ['column A', 'column B' .... ] 를 하고 난 후에
-
-X = (data(melbourne_data))[(나타낼 데이터 호칭)]
+    X = (data(melbourne_data))[(나타낼 데이터 호칭)]
 
 # Building My Model
 
@@ -31,7 +30,7 @@ scikit-learn(싸이킷 런)을 이용해서, 모델을 만들 수 있다.
 
 1. 모델을 정해라. 매번 돌릴 때마다 같은 결과를 만들기 위해 random_state를 위한 숫자를 정해라. Specifying a number for random_state eusures you get the same results in each run.
 
-melbourne_model = DecisionTreeRegressor(random_state=1)
+- melbourne_model = DecisionTreeRegressor(random_state=1)
 
 2. fit model하는 과정 :melbourne_model.fit(X, y)
 
@@ -39,13 +38,13 @@ melbourne_model = DecisionTreeRegressor(random_state=1)
 
 1. prediction error for each house is:<br> error = actual - predicted
 
-<mean absolute error를 계산하는 과정>
+- <mean absolute error를 계산하는 과정>
 
 2. from sklearn.metrics import mean_absolute_error로 import하기
 
 3. predicted_home_prices = melbourne_model.predict(X)<br>mean_absolute_error(y, predicted_home_prices)
 
-<데이터를 두 개로 나누는 과정(training and validation data)>
+- <데이터를 두 개로 나누는 과정(training and validation data)>
 
 1. from sklearn.model_selection import train_test_split
 
@@ -70,27 +69,27 @@ melbourne_model = DecisionTreeRegressor(random_state=1)
 
 4. sklearn.metrics import mean_absolute_error<br>sklearn.tree import DecisionTreeRegressor
 
-def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
+    def get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y):
 
-    model = DecisionTreeRegressor(max_leaf_nodes = max_leaf_nodes, random_state = 0)
+        model = DecisionTreeRegressor(max_leaf_nodes = max_leaf_nodes, random_state = 0)
 
-    model.fit(train_X, train_y)
+        model.fit(train_X, train_y)
 
-    preds_val = model.predict(val_X)
+        preds_val = model.predict(val_X)
 
-    mae = mean_absolute_error(val_y, preds_val)
+        mae = mean_absolute_error(val_y, preds_val)
 
-    return(mae)
+        return(mae)
 
 데이터는 전부터 써왔던 코드로 인해 train_X, val_X, train_y, val_y로 로드되었음.
 
 5. #compare MAE with differing values of max_leaf_nodes
 
-for max_leaf_nodes in [5, 50, 500, 5000]:
-    
-    my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
+    for max_leaf_nodes in [5, 50, 500, 5000]:
+        
+        my_mae = get_mae(max_leaf_nodes, train_X, val_X, train_y, val_y)
 
-    print("Max leaf nodes: %d \t\t Mean Absolute Error: %d" % (max_leaf_nodes, my_mae))
+        print("Max leaf nodes: %d \t\t Mean Absolute Error: %d" % (max_leaf_nodes, my_mae))
 
     하면..
 
@@ -123,13 +122,13 @@ Max leaf nodes: 5000  		 Mean Absolute Error:  254983
 
 5. from sklearn.ensemble import RandomForestRegressor<br>from sklearn.metrics import mean_absolute_error
 
-forest_model = RandomForestRegressor(random_state = 1)
+- forest_model = RandomForestRegressor(random_state = 1)
 
-forest_model.fit(train_X, train_y)
+- forest_model.fit(train_X, train_y)
 
-melb_preds = forest_model.predict(val_X)
+- melb_preds = forest_model.predict(val_X)
 
-print(mean_absolute_error(val_y, melb_preds))
+- print(mean_absolute_error(val_y, melb_preds))
 
 
 <val_X에 random forest 모델을 이용한 예측값과, fit을 통한 val_y의 값의 MAE를 구하는 과정인 것>
